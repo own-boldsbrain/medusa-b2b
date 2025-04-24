@@ -1,5 +1,5 @@
 {
-  "name": "medusa-admin",
+  "name": "oceano-admin",
   "private": true,
   "description": "A proprietary Admin system to manage Medusa Stores",
   "version": "0.1.0",
@@ -99,16 +99,9 @@
   },
   "scripts": {
     "dev": "vite --port 7000",
-    "develop": "npm run dev",
-    "check": "tsc",
     "build": "vite build",
-    "preview": "vite preview --port 7000",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "start": "npm run dev",
-    "serve": "npm run preview",
-    "test": "echo \"Write tests! && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "start": "vite preview --port 7000",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
   },
   "repository": {
     "type": "git",
