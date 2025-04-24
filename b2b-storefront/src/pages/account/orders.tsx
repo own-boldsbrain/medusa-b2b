@@ -4,21 +4,21 @@ import Head from "@modules/common/components/head"
 import Layout from "@modules/layout/templates"
 import { NextPageWithLayout } from "types/global"
 
-const Orders: NextPageWithLayout = () => {
+const Pedidos: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Orders" description="Overview of your previous orders." />
+      <Head title="Pedidos" description="Visão geral dos seus pedidos anteriores." />
       <OrdersTemplate />
     </>
   )
 }
 
-Orders.getLayout = (page) => {
+Pedidos.getLayout = (pagina) => {
   return (
     <Layout>
-      <AccountLayout>{page}</AccountLayout>
+      <AccountLayout>{pagina}</AccountLayout>
     </Layout>
   )
 }
 
-export default Orders
+export default Pedidos

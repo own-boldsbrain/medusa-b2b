@@ -4,18 +4,18 @@ import Link from "next/link"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const NotFound: NextPageWithLayout = () => {
+const NaoEncontrado: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="404" description="Something went wrong" />
+      <Head title="404" description="Algo deu errado" />
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)]">
-        <h1 className="text-2xl-semi text-gry-900">Page not found</h1>
+        <h1 className="text-2xl-semi text-gry-900">Página não encontrada</h1>
         <p className="text-small-regular text-gray-700">
-          The page you tried to access does not exist.
+          A página que você tentou acessar não existe.
         </p>
         <Link href="/">
           <a className="mt-4 underline text-base-regular text-gray-900">
-            Go to frontpage
+            Ir para a página inicial
           </a>
         </Link>
       </div>
@@ -23,8 +23,8 @@ const NotFound: NextPageWithLayout = () => {
   )
 }
 
-NotFound.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+NaoEncontrado.getLayout = (pagina: ReactElement) => {
+  return <Layout>{pagina}</Layout>
 }
 
-export default NotFound
+export default NaoEncontrado

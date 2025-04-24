@@ -5,21 +5,21 @@ import Layout from "@modules/layout/templates"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const Profile: NextPageWithLayout = () => {
+const Perfil: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Profile" description="View and edit your ACME profile." />
+      <Head title="Perfil" description="Visualize e edite seu perfil ACME." />
       <ProfileTemplate />
     </>
   )
 }
 
-Profile.getLayout = (page: ReactElement) => {
+Perfil.getLayout = (pagina: ReactElement) => {
   return (
     <Layout>
-      <AccountLayout>{page}</AccountLayout>
+      <AccountLayout>{pagina}</AccountLayout>
     </Layout>
   )
 }
 
-export default Profile
+export default Perfil

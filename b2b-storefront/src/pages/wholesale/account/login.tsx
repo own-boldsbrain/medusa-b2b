@@ -6,14 +6,14 @@ import { NextPageWithLayout } from "types/global"
 const Login: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Sign in" description="Sign in to your Wholesale account." />
+      <Head title="Entrar" description="Faça login no Oceano." />
       <LoginTemplate />
     </>
   )
 }
 
-Login.getLayout = (page) => {
-  return <Layout>{page}</Layout>
+Login.getLayout = (pagina) => {
+  return <Layout>{pagina}</Layout>
 }
 
 export default Login

@@ -81,7 +81,7 @@ MailNotice.args = {
 const bathrobe = {
   title: "Hooded Bathrobe",
   thumbnail:
-    "https://images.ctfassets.net/4g6al16haqoj/2f87V5hComRvKsAJGJqXd1/768a1256ed7f51b6833d2fdb270ab861/robe_for_green_2665_copy.jpg?w=1666&h=2082&q=50&fm=webp",
+    "https://images.ctfassets.net/4g6al16haqoj/2f87V5hComRvKsAJGJqXd1/768a1256ed7f51b6833d2fdb270ab861/robe_for_green_2665_copy.mp4?w=1666&h=2082&q=50&fm=webp",
   quantity: 1,
   variant: {
     title: "Extra Small",
@@ -91,7 +91,7 @@ const bathrobe = {
 const sleepwear = {
   title: "Flannel Sleepwear",
   thumbnail:
-    "https://images.ctfassets.net/4g6al16haqoj/7DiYDZz6olzxMECmqlFGog/e15481f823dd1a102e80f624d1fe14a5/male_frontal_0003_pj_mid_blu_0541.jpg?w=1678&h=2098&q=50&fm=webp",
+    "https://images.ctfassets.net/4g6al16haqoj/7DiYDZz6olzxMECmqlFGog/e15481f823dd1a102e80f624d1fe14a5/male_frontal_0003_pj_mid_blu_0541.mp4?w=1678&h=2098&q=50&fm=webp",
   quantity: 2,
   variant: {
     title: "Large",

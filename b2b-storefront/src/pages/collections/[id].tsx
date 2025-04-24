@@ -12,18 +12,18 @@ import { ReactElement } from "react"
 import { dehydrate, QueryClient, useQuery } from "react-query"
 import { NextPageWithLayout, PrefetchedPageProps } from "../../types/global"
 
-interface Params extends ParsedUrlQuery {
+interface Parametros extends ParsedUrlQuery {
   id: string
 }
 
-const fetchCollection = async (id: string) => {
+const buscarColecao = async (id: string) => {
   return await medusaClient.collections.retrieve(id).then(({ collection }) => ({
     id: collection.id,
     title: collection.title,
   }))
 }
 
-export const fetchCollectionProducts = async ({
+export const buscarProdutosColecao = async ({
   pageParam = 0,
   id,
   cartId,
@@ -45,15 +45,15 @@ export const fetchCollectionProducts = async ({
   }
 }
 
-const CollectionPage: NextPageWithLayout<PrefetchedPageProps> = ({
+const PaginaColecao: NextPageWithLayout<PrefetchedPageProps> = ({
   notFound,
 }) => {
   const { query, isFallback, replace } = useRouter()
   const id = typeof query.id === "string" ? query.id : ""
 
   const { data, isError, isSuccess, isLoading } = useQuery(
-    ["get_collection", id],
-    () => fetchCollection(id)
+    ["obter_colecao", id],
+    () => buscarColecao(id)
   )
 
   if (notFound) {
@@ -75,7 +75,7 @@ const CollectionPage: NextPageWithLayout<PrefetchedPageProps> = ({
   if (isSuccess) {
     return (
       <>
-        <Head title={data.title} description={`${data.title} collection`} />
+        <Head title={data.title} description={`Coleção ${data.title}`} />
         <CollectionTemplate collection={data} />
       </>
     )
@@ -84,11 +84,11 @@ const CollectionPage: NextPageWithLayout<PrefetchedPageProps> = ({
   return <></>
 }
 
-CollectionPage.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+PaginaColecao.getLayout = (pagina: ReactElement) => {
+  return <Layout>{pagina}</Layout>
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths<Parametros> = async () => {
   const ids = await getCollectionIds()
 
   return {
@@ -101,19 +101,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient()
   const id = context.params?.id as string
 
-  await queryClient.prefetchQuery(["get_collection", id], () =>
-    fetchCollection(id)
+  await queryClient.prefetchQuery(["obter_colecao", id], () =>
+    buscarColecao(id)
   )
 
   await queryClient.prefetchInfiniteQuery(
-    ["get_collection_products", id],
-    ({ pageParam }) => fetchCollectionProducts({ pageParam, id }),
+    ["obter_produtos_colecao", id],
+    ({ pageParam }) => buscarProdutosColecao({ pageParam, id }),
     {
       getNextPageParam: (lastPage) => lastPage.nextPage,
     }
   )
 
-  const queryData = await queryClient.getQueryData([`get_collection`, id])
+  const queryData = await queryClient.getQueryData([`obter_colecao`, id])
 
   if (!queryData) {
     return {
@@ -125,11 +125,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      // Work around see – https://github.com/TanStack/query/issues/1458#issuecomment-747716357
+      // Solução alternativa veja – https://github.com/TanStack/query/issues/1458#issuecomment-747716357
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
       notFound: false,
     },
   }
 }
 
-export default CollectionPage
+export default PaginaColecao

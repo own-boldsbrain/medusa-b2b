@@ -5,21 +5,21 @@ import Layout from "@modules/layout/templates"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const Account: NextPageWithLayout = () => {
+const Conta: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Account" description="Overview of your account activity." />
+      <Head title="Conta" description="Visão geral da atividade da sua conta." />
       <OverviewTemplate />
     </>
   )
 }
 
-Account.getLayout = (page: ReactElement) => {
+Conta.getLayout = (pagina: ReactElement) => {
   return (
     <Layout>
-      <AccountLayout>{page}</AccountLayout>
+      <AccountLayout>{pagina}</AccountLayout>
     </Layout>
   )
 }
 
-export default Account
+export default Conta

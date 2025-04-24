@@ -10,18 +10,18 @@ import { ReactElement } from "react"
 import { dehydrate, QueryClient, useQuery } from "react-query"
 import { NextPageWithLayout } from "types/global"
 
-const fetchOrder = async (id: string) => {
+const buscarPedido = async (id: string) => {
   return await medusaClient.orders.retrieve(id).then(({ order }) => order)
 }
 
-const Confirmed: NextPageWithLayout = () => {
+const Confirmado: NextPageWithLayout = () => {
   const router = useRouter()
 
   const id = typeof router.query?.id === "string" ? router.query.id : ""
 
   const { isSuccess, data, isLoading, isError } = useQuery(
-    ["get_order_confirmed", id],
-    () => fetchOrder(id),
+    ["obter_pedido_confirmado", id],
+    () => buscarPedido(id),
     {
       enabled: id.length > 0,
       staleTime: Infinity,
@@ -44,8 +44,8 @@ const Confirmed: NextPageWithLayout = () => {
     return (
       <>
         <Head
-          title="Order Confirmed"
-          description="You purchase was successful"
+          title="Pedido Confirmado"
+          description="Sua compra foi realizada com sucesso"
         />
 
         <OrderCompletedTemplate order={data} />
@@ -56,8 +56,8 @@ const Confirmed: NextPageWithLayout = () => {
   return <></>
 }
 
-Confirmed.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+Confirmado.getLayout = (pagina: ReactElement) => {
+  return <Layout>{pagina}</Layout>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -71,8 +71,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(["get_order_confirmed", id], () =>
-    fetchOrder(id)
+  await queryClient.prefetchQuery(["obter_pedido_confirmado", id], () =>
+    buscarPedido(id)
   )
 
   return {
@@ -82,4 +82,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export default Confirmed
+export default Confirmado

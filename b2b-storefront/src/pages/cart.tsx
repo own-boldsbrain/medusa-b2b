@@ -4,17 +4,17 @@ import Layout from "@modules/layout/templates"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const Cart: NextPageWithLayout = () => {
+const Carrinho: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Shopping Bag" description="View your shopping bag" />
+      <Head title="Sacola de Compras" description="Veja sua sacola de compras" />
       <CartTemplate />
     </>
   )
 }
 
-Cart.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+Carrinho.getLayout = (pagina: ReactElement) => {
+  return <Layout>{pagina}</Layout>
 }
 
-export default Cart
+export default Carrinho

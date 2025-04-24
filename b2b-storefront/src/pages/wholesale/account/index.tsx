@@ -17,16 +17,16 @@ const Account: NextPageWithLayout = () => {
 
   return (
     <>
-      <Head title="Wholesale Account" description="Overview of your account activity." />
+      <Head title="Conta Atacado" description="Visão geral da atividade da sua conta." />
       <OverviewTemplate />
     </>
   )
 }
 
-Account.getLayout = (page: ReactElement) => {
+Account.getLayout = (pagina: ReactElement) => {
   return (
     <Layout>
-      <AccountLayout>{page}</AccountLayout>
+      <AccountLayout>{pagina}</AccountLayout>
     </Layout>
   )
 }

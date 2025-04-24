@@ -8,7 +8,7 @@ import { StoreGetProductsParams } from "@medusajs/medusa"
 import { useAccount } from "@lib/context/account-context"
 import { useState } from "react"
 
-const Store: NextPageWithLayout = () => {
+const Loja: NextPageWithLayout = () => {
   const [params, setParams] = useState<StoreGetProductsParams>({})
   const { is_b2b } = useAccount()
 
@@ -16,7 +16,7 @@ const Store: NextPageWithLayout = () => {
     <>
       {!is_b2b && (
         <>
-          <Head title="Store" description="Explore all of our products." />
+          <Head title="Loja" description="Explore todos os nossos produtos." />
           <div className="flex flex-col small:flex-row small:items-start py-6">
             <RefinementList refinementList={params} setRefinementList={setParams} />
             <InfiniteProducts params={params} />
@@ -25,7 +25,7 @@ const Store: NextPageWithLayout = () => {
       )}
       {is_b2b && (
         <>
-          <Head title="Wholesale Products" description="Explore all of our products." />
+          <Head title="Produtos Atacado" description="Explore todos os nossos produtos." />
           <div className="flex flex-col small:flex-row small:items-start py-6">
             <Products params={{
               ...params,
@@ -38,6 +38,6 @@ const Store: NextPageWithLayout = () => {
   )
 }
 
-Store.getLayout = (page) => <Layout>{page}</Layout>
+Loja.getLayout = (pagina) => <Layout>{pagina}</Layout>
 
-export default Store
+export default Loja

@@ -17,7 +17,7 @@ const GiftCardRes = {
   is_giftcard: true,
   status: "published",
   thumbnail:
-    "https://images.ctfassets.net/4g6al16haqoj/kZT0jwrTOTGbDpK3XlRZQ/acb10c53c1acdd53cf1336b5f26fbb10/giftcard.jpg",
+    "https://images.ctfassets.net/4g6al16haqoj/kZT0jwrTOTGbDpK3XlRZQ/acb10c53c1acdd53cf1336b5f26fbb10/giftcard.mp4",
   variants: [
     {
       id: "variant_01FSM2R7EVZR9MRNWBC5WB14RT",

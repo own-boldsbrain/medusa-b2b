@@ -1,80 +1,80 @@
 [
   {
-    "name": "Consumo Eficaz – Extra Pequeno",
-    "tier": "eficaz",
-    "size": "Extra Pequeno",
-    "base_capacity_kw": 3,
-    "adjusted_capacity_kw": 3.45,
-    "consumption_percentage": 115,
-    "composition": [
+    "nome": "Consumo Eficaz – Extra Pequeno",
+    "nivel": "eficaz",
+    "tamanho": "Extra Pequeno",
+    "capacidade_base_kw": 3,
+    "capacidade_ajustada_kw": 3.45,
+    "percentual_consumo": 115,
+    "composicao": [
       {
-        "brand": "Solis",
-        "components": [
-          { "type": "panel", "model": "Solis X5 450W", "quantity": 8 },
-          { "type": "inverter", "model": "Solis INV-5kW", "quantity": 1 }
+        "marca": "Solis",
+        "componentes": [
+          { "tipo": "painel", "modelo": "Solis X5 450W", "quantidade": 8 },
+          { "tipo": "inversor", "modelo": "Solis INV-5kW", "quantidade": 1 }
         ],
-        "efficiency": 0.19,
-        "durability_years": 25,
+        "eficiencia": 0.19,
+        "durabilidade_anos": 25,
         "video_url": "https://example.com/videos/solis-extra-pequeno.mp4"
       },
       {
-        "brand": "Growatt",
-        "components": [
-          { "type": "panel", "model": "Growatt G10 440W", "quantity": 8 },
-          { "type": "inverter", "model": "Growatt GW-6KTL", "quantity": 1 }
+        "marca": "Growatt",
+        "componentes": [
+          { "tipo": "painel", "modelo": "Growatt G10 440W", "quantidade": 8 },
+          { "tipo": "inversor", "modelo": "Growatt GW-6KTL", "quantidade": 1 }
         ],
-        "efficiency": 0.18,
-        "durability_years": 20,
+        "eficiencia": 0.18,
+        "durabilidade_anos": 20,
         "video_url": "https://example.com/videos/growatt-extra-pequeno.mp4"
       },
       {
-        "brand": "Sungrow",
-        "components": [
-          { "type": "panel", "model": "Sungrow S6 455W", "quantity": 8 },
-          { "type": "inverter", "model": "Sungrow SG-10KTL-M", "quantity": 1 }
+        "marca": "Sungrow",
+        "componentes": [
+          { "tipo": "painel", "modelo": "Sungrow S6 455W", "quantidade": 8 },
+          { "tipo": "inversor", "modelo": "Sungrow SG-10KTL-M", "quantidade": 1 }
         ],
-        "efficiency": 0.192,
-        "durability_years": 25,
+        "eficiencia": 0.192,
+        "durabilidade_anos": 25,
         "video_url": "https://example.com/videos/sungrow-extra-pequeno.mp4"
       }
     ]
   },
   {
-    "name": "Consumo Eficaz – Pequeno",
-    "tier": "eficaz",
-    "size": "Pequeno",
-    "base_capacity_kw": 5,
-    "adjusted_capacity_kw": 5.75,
-    "consumption_percentage": 115,
-    "composition": [
+    "nome": "Consumo Eficaz – Pequeno",
+    "nivel": "eficaz",
+    "tamanho": "Pequeno",
+    "capacidade_base_kw": 5,
+    "capacidade_ajustada_kw": 5.75,
+    "percentual_consumo": 115,
+    "composicao": [
       {
-        "brand": "Solis",
-        "components": [
-          { "type": "panel", "model": "Solis X5 450W", "quantity": 13 },
-          { "type": "inverter", "model": "Solis INV-5kW", "quantity": 2 }
+        "marca": "Solis",
+        "componentes": [
+          { "tipo": "painel", "modelo": "Solis X5 450W", "quantidade": 13 },
+          { "tipo": "inversor", "modelo": "Solis INV-5kW", "quantidade": 2 }
         ],
-        "efficiency": 0.19,
-        "durability_years": 25,
+        "eficiencia": 0.19,
+        "durabilidade_anos": 25,
         "video_url": "https://example.com/videos/solis-pequeno.mp4"
       },
       {
-        "brand": "Growatt",
-        "components": [
-          { "type": "panel", "model": "Growatt G10 440W", "quantity": 14 },
-          { "type": "inverter", "model": "Growatt GW-6KTL", "quantity": 1 }
+        "marca": "Growatt",
+        "componentes": [
+          { "tipo": "painel", "modelo": "Growatt G10 440W", "quantidade": 14 },
+          { "tipo": "inversor", "modelo": "Growatt GW-6KTL", "quantidade": 1 }
         ],
-        "efficiency": 0.18,
-        "durability_years": 20,
+        "eficiencia": 0.18,
+        "durabilidade_anos": 20,
         "video_url": "https://example.com/videos/growatt-pequeno.mp4"
       },
       {
-        "brand": "Sungrow",
-        "components": [
-          { "type": "panel", "model": "Sungrow S6 455W", "quantity": 13 },
-          { "type": "inverter", "model": "Sungrow SG-10KTL-M", "quantity": 1 }
+        "marca": "Sungrow",
+        "componentes": [
+          { "tipo": "painel", "modelo": "Sungrow S6 455W", "quantidade": 13 },
+          { "tipo": "inversor", "modelo": "Sungrow SG-10KTL-M", "quantidade": 1 }
         ],
-        "efficiency": 0.192,
-        "durability_years": 25,
+        "eficiencia": 0.192,
+        "durabilidade_anos": 25,
         "video_url": "https://example.com/videos/sungrow-pequeno.mp4"
       }
     ]

@@ -12,7 +12,7 @@ function App({
   Component,
   pageProps,
 }: AppPropsWithLayout<{ dehydratedState?: unknown }>) {
-  const getLayout = Component.getLayout ?? ((page) => page)
+  const getLayout = Component.getLayout ?? ((pagina) => pagina)
 
   return (
     <MedusaProvider

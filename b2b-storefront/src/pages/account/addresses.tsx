@@ -5,21 +5,21 @@ import Layout from "@modules/layout/templates"
 import { ReactElement } from "react"
 import { NextPageWithLayout } from "types/global"
 
-const Addresses: NextPageWithLayout = () => {
+const Enderecos: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Addresses" description="View your addresses" />
+      <Head title="Endereços" description="Visualize seus endereços" />
       <AddressesTemplate />
     </>
   )
 }
 
-Addresses.getLayout = (page: ReactElement) => {
+Enderecos.getLayout = (pagina: ReactElement) => {
   return (
     <Layout>
-      <AccountLayout>{page}</AccountLayout>
+      <AccountLayout>{pagina}</AccountLayout>
     </Layout>
   )
 }
 
-export default Addresses
+export default Enderecos

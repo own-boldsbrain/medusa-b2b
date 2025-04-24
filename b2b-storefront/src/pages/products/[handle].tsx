@@ -12,51 +12,51 @@ import { ParsedUrlQuery } from "querystring";
 import { Product } from "@medusajs/medusa";
 
 interface SolarKit {
-  name: string;
-  composition: {
+  nome: string;
+  composicao: {
     video_url: string;
   }[];
 }
 
-interface PrefetchedPageProps {
-  notFound: boolean;
+interface PropriedadesPaginaPreRenderizada {
+  naoEncontrado: boolean;
 }
 
-interface Params extends ParsedUrlQuery {
+interface Parametros extends ParsedUrlQuery {
   handle: string;
 }
 
-const fetchProduct = async (handle: string): Promise<Product> => {
+const buscarProduto = async (handle: string): Promise<Product> => {
   return await medusaClient.products
     .list({ handle })
     .then(({ products }: { products: Product[] }) => products[0]);
 };
 
-const ProductPage: NextPage<PrefetchedPageProps> = ({ notFound }) => {
+const PaginaProduto: NextPage<PropriedadesPaginaPreRenderizada> = ({ naoEncontrado }) => {
   const { query, isFallback, replace } = useRouter();
   const handle = typeof query.handle === "string" ? query.handle : "";
 
   const { data, isError, isLoading } = useQuery(
-    [`get_product`, handle],
-    () => fetchProduct(handle),
+    [`obter_produto`, handle],
+    () => buscarProduto(handle),
     {
       enabled: handle.length > 0,
       keepPreviousData: true,
     }
   );
 
-  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [urlVideo, setUrlVideo] = useState<string | null>(null);
 
   useEffect(() => {
     if (data) {
-      const kit = (solarKits as SolarKit[]).find((kit) => kit.name === data.title);
+      const kit = (solarKits as SolarKit[]).find((kit) => kit.nome === data.title);
       if (kit) {
-        setVideoUrl(kit.composition[0]?.video_url || null);
+        setUrlVideo(kit.composicao[0]?.video_url || null);
       }
     }
   }, [data]);
 
-  if (notFound) {
+  if (naoEncontrado) {
     if (typeof window !== "undefined") {
       replace("/404");
     }
@@ -75,11 +75,11 @@ const ProductPage: NextPage<PrefetchedPageProps> = ({ notFound }) => {
   return (
     <Layout>
       <ProductTemplate product={data} />
-      {videoUrl && (
+      {urlVideo && (
         <div className="mt-8">
           <h2 className="text-lg font-semibold">Vídeo do Produto</h2>
           <video controls className="w-full max-w-lg mt-4">
-            <source src={videoUrl} type="video/mp4" />
+            <source src={urlVideo} type="video/mp4" />
             Seu navegador não suporta o elemento de vídeo.
           </video>
         </div>
@@ -88,11 +88,11 @@ const ProductPage: NextPage<PrefetchedPageProps> = ({ notFound }) => {
   );
 };
 
-ProductPage.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>;
+PaginaProduto.getLayout = (pagina: ReactElement) => {
+  return <Layout>{pagina}</Layout>;
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths<Parametros> = async () => {
   const handles = await medusaClient.products.list().then(({ products }) =>
     products.map((product) => product.handle)
   );
@@ -107,19 +107,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient();
   const handle = context.params?.handle as string;
 
-  await queryClient.prefetchQuery(["get_product", handle], () =>
-    fetchProduct(handle)
+  await queryClient.prefetchQuery(["obter_produto", handle], () =>
+    buscarProduto(handle)
   );
 
-  const notFound = !(await queryClient.getQueryData(["get_product", handle]));
+  const naoEncontrado = !(await queryClient.getQueryData(["obter_produto", handle]));
 
   return {
     props: {
-      notFound,
+      naoEncontrado,
       dehydratedState: dehydrate(queryClient),
     },
     revalidate: 10,
   };
 };
 
-export default ProductPage;
+export default PaginaProduto;
