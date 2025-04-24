@@ -72,12 +72,12 @@ const ControlledSearchBox = ({
 const SearchBox = () => {
   return (
     <SearchBoxWrapper>
-      {(props) => {
-        return (
-          <>
-            <ControlledSearchBox {...props} />
-          </>
-        )
+      {(props: ControlledSearchBoxProps) => {
+      return (
+        <>
+        <ControlledSearchBox {...props} />
+        </>
+      )
       }}
     </SearchBoxWrapper>
   )

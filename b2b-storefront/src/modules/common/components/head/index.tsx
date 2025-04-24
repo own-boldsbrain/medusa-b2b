@@ -1,22 +1,30 @@
-import NextHead from "next/head"
-import React from "react"
+import React from "react";
+import { NextSeo } from "next-seo";
+import seoConfig from "../../../config/seo-config.json";
 
-type HeadProps = {
-  title?: string
-  description?: string | null
-  image?: string | null
+type Region = "GD" | "GC" | "Meli";
+
+interface HeadProps {
+  title: string;
+  description?: string;
+  region?: Region;
 }
 
-const Head: React.FC<HeadProps> = ({ title, description, image }) => {
+const Head: React.FC<HeadProps> = ({ title, description, region }) => {
+  const regionConfig = region ? seoConfig.regions[region] : seoConfig.default;
+
   return (
-    <NextHead>
-      <title>{title} | ACME</title>
-      <meta itemProp="name" content={title} />
-      {description && <meta itemProp="description" content={description} />}
-      {image && <meta itemProp="image" content={image} />}
-      <link rel="icon" href="/favicon.ico" />
-    </NextHead>
-  )
-}
+    <NextSeo
+      title={title}
+      description={description || regionConfig.description}
+      additionalMetaTags={[
+        {
+          name: "keywords",
+          content: regionConfig.keywords,
+        },
+      ]}
+    />
+  );
+};
 
-export default Head
+export default Head;

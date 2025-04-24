@@ -1,0 +1,20 @@
+{
+  "regions": {
+    "GD": {
+      "keywords": "photovoltaic solar GD Brazil, distributed generation solar",
+      "description": "Explore distributed generation solar solutions in Brazil."
+    },
+    "GC": {
+      "keywords": "photovoltaic solar GC Brazil, centralized generation solar",
+      "description": "Discover centralized generation solar opportunities in Brazil."
+    },
+    "Meli": {
+      "keywords": "photovoltaic solar Meli Brazil, solar energy marketplace",
+      "description": "Join the solar energy marketplace in Brazil."
+    }
+  },
+  "default": {
+    "keywords": "photovoltaic solar Brazil, renewable energy solutions",
+    "description": "Leading photovoltaic solar solutions in Brazil."
+  }
+}

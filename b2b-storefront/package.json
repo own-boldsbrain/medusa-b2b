@@ -13,6 +13,7 @@
     "start": "next start -p 8000",
     "lint": "next lint",
     "cypress": "cypress open",
+    "test:e2e": "cypress run",
     "analyze": "ANALYZE=true next build"
   },
   "resolutions": {

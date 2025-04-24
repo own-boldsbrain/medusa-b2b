@@ -1,66 +1,22 @@
-import React from "react"
-import { Helmet } from "react-helmet"
+import React from "react";
+import { Helmet } from "react-helmet";
 
-const site = {
-  siteMetadata: {
-    title: `Admin`,
-    description: `The best ecommerce software.`,
-    author: `@medusajs`,
-  },
-}
+const SEO = ({ title, description, region }) => {
+  const regionKeywords = {
+    GD: "photovoltaic solar GD Brazil, distributed generation solar",
+    GC: "photovoltaic solar GC Brazil, centralized generation solar",
+    Meli: "photovoltaic solar Meli Brazil, solar energy marketplace",
+  };
 
-function SEO({ description, lang, meta, title }) {
-  const metaDescription = description || site.siteMetadata.description
+  const keywords = region ? regionKeywords[region] : "photovoltaic solar Brazil";
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
-  )
-}
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+    </Helmet>
+  );
+};
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-export default SEO
+export default SEO;
