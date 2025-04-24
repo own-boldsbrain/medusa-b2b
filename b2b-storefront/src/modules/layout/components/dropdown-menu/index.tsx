@@ -57,7 +57,6 @@ const DropdownMenu = () => {
                   </Popover.Button>
                 </a>
               </Link>
-  
               <Transition
                 show={open}
                 as={React.Fragment}

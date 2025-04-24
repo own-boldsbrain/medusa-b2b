@@ -66,13 +66,13 @@ const Products = ({ params }: ProductsType) => {
           <table className="table-auto w-full border-collapse border">
             <thead>
               <tr className="text-left border-collapse border">
-                <th className="p-3">Product Title</th>
-                <th>Variant Title</th>
+                <th className="p-3">Título do Produto</th>
+                <th>Título da Variante</th>
                 <th>SKU</th>
-                <th>Options</th>
-                <th>Available Quantity</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>Opções</th>
+                <th>Quantidade Disponível</th>
+                <th>Preço</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -100,9 +100,9 @@ const Products = ({ params }: ProductsType) => {
                             </ul>
                           </td>
                           <td>{variant.inventory_quantity}</td>
-                          <td><ProductPrice product={product} variant={variant} /></td>
+                          <td>{<ProductPrice product={product} variant={variant} />}</td>
                           <td>
-                            <ProductActions product={product} selectedVariant={variant} />
+                            <ProductActions product={product} selectedVariant={variant}>{null}</ProductActions>
                           </td>
                          </tr>
                       </ProductProvider>
@@ -113,11 +113,11 @@ const Products = ({ params }: ProductsType) => {
           </table>
           <div className="my-2 flex justify-center items-center">
             <Button onClick={previousPage} disabled={currentPage <= 1} className="w-max inline-flex">
-              Prev
+              Anterior
             </Button>
             <span className="mx-4">{currentPage}</span>
             <Button onClick={nextPage} disabled={count !== undefined && limit !== undefined && (count / (offset + limit)) <= 1} className="w-max inline-flex">
-              Next
+              Próximo
             </Button>
           </div>
         </>

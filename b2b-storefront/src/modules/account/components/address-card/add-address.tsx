@@ -90,7 +90,8 @@ const AddAddress: React.FC = () => {
         onClick={open}
       >
         <span className="text-base-semi">New address</span>
-        <Plus size={24} />
+        {/* Ajuste no uso do componente Plus para garantir compatibilidade */}
+        <Plus size="24" color="currentColor" />
       </button>
 
       <Modal isOpen={state} close={handleClose}>
@@ -161,8 +162,10 @@ const AddAddress: React.FC = () => {
               errors={errors}
               autoComplete="address-level1"
             />
+            {/* Ajuste no uso do componente CountrySelect para garantir compatibilidade */}
             <CountrySelect
               {...register("country_code", { required: true })}
+              placeholder="Selecione um país"
               autoComplete="country"
             />
             <Input
@@ -185,7 +188,10 @@ const AddAddress: React.FC = () => {
           </Button>
           <Button className="min-h-0" onClick={submit} disabled={submitting}>
             Salvar
-            {submitting && <Spinner />}
+            {/* Ajuste no uso do componente Spinner para garantir compatibilidade */}
+            {submitting && (
+              <Spinner size="16" color="currentColor" />
+            )}
           </Button>
         </Modal.Footer>
       </Modal>

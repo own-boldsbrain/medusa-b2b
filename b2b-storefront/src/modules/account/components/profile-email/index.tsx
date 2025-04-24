@@ -72,7 +72,7 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
   return (
     <form onSubmit={handleSubmit(updateEmail)} className="w-full">
       <AccountInfo
-        label="Email"
+        label="E-mail"
         currentInfo={`${customer.email}`}
         isLoading={isLoading}
         isSuccess={isSuccess}
@@ -82,7 +82,7 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
       >
         <div className="grid grid-cols-1 gap-y-2">
           <Input
-            label="Email"
+            label="E-mail"
             {...register("email", {
               required: true,
             })}

@@ -64,10 +64,14 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
                   ? selectedAddress.address_1
                   : "Choose an address"}
               </span>
-              <ChevronDown
-                size={16}
-                className={clsx({ "transform rotate-180": open })}
-              />
+              <span>
+                <span>
+                  <ChevronDown
+                    size={16}
+                    className={clsx({ "transform rotate-180": open })}
+                  ></ChevronDown>
+                </span>
+              </span>
             </>
           )}
         </Listbox.Button>

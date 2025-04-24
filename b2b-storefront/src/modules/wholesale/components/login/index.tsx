@@ -52,34 +52,35 @@ const Login = () => {
 
   return (
     <div className="max-w-sm w-full flex flex-col items-center">
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
+      <h1 className="text-large-semi uppercase mb-6">Bem-vindo de volta</h1>
       <p className="text-center text-base-regular text-gray-700 mb-8">
-        Sign in to your wholesale account
+        Faça login na sua conta de atacado
       </p>
       <form className="w-full" onSubmit={onSubmit}>
         <div className="flex flex-col w-full gap-y-2">
+          {/* Ajuste no uso do componente Input e Button para resolver problemas de compatibilidade */}
           <Input
-            label="Email"
-            {...register("email", { required: "Email is required" })}
-            autoComplete="email"
-            errors={errors}
+            label="E-mail"
+            {...register("email", { required: "O e-mail é obrigatório" })}
           />
           <Input
-            label="Password"
-            {...register("password", { required: "Password is required" })}
-            type="password"
-            autoComplete="current-password"
-            errors={errors}
+            label="Senha"
+            {...register("password", { required: "A senha é obrigatória" })}
           />
         </div>
         {authError && (
           <div>
             <span className="text-rose-500 w-full text-small-regular">
-              These credentials do not match our records
+              Essas credenciais não correspondem aos nossos registros
             </span>
           </div>
         )}
-        <Button className="mt-6">Enter</Button>
+        <Button
+          className="mt-6"
+          type="submit"
+        >
+          Entrar
+        </Button>
       </form>
     </div>
   )

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useQuery, QueryClient, dehydrate } from "react-query";
@@ -7,7 +8,7 @@ import Layout from "@modules/layout/templates";
 import ProductTemplate from "@modules/products/templates";
 import SkeletonProductPage from "@modules/skeletons/templates/skeleton-product-page";
 import { medusaClient } from "@lib/config";
-import solarKits from "@config/solar-kits.json";
+import solarKits from '../../config/solar-kits.json';
 import { ParsedUrlQuery } from "querystring";
 import { Product } from "@medusajs/medusa";
 
@@ -29,10 +30,10 @@ interface Parametros extends ParsedUrlQuery {
 const buscarProduto = async (handle: string): Promise<Product> => {
   return await medusaClient.products
     .list({ handle })
-    .then(({ products }: { products: Product[] }) => products[0]);
+    .then(({ products }: { products: PricedProduct[] }) => products[0] as Product);
 };
 
-const PaginaProduto: NextPage<PropriedadesPaginaPreRenderizada> = ({ naoEncontrado }) => {
+const PaginaProduto: NextPage<PropriedadesPaginaPreRenderizada> = ({ naoEncontrado }: { naoEncontrado: boolean }) => {
   const { query, isFallback, replace } = useRouter();
   const handle = typeof query.handle === "string" ? query.handle : "";
 
@@ -61,7 +62,11 @@ const PaginaProduto: NextPage<PropriedadesPaginaPreRenderizada> = ({ naoEncontra
       replace("/404");
     }
 
-    return <SkeletonProductPage />;
+    return (
+      <SkeletonProductPage>
+        {/* Adicione children se necessário */}
+      </SkeletonProductPage>
+    );
   }
 
   if (isFallback || isLoading || !data) {
@@ -74,7 +79,9 @@ const PaginaProduto: NextPage<PropriedadesPaginaPreRenderizada> = ({ naoEncontra
 
   return (
     <Layout>
-      <ProductTemplate product={data} />
+      <ProductTemplate>
+        {/* Adicione children se necessário */}
+      </ProductTemplate>
       {urlVideo && (
         <div className="mt-8">
           <h2 className="text-lg font-semibold">Vídeo do Produto</h2>

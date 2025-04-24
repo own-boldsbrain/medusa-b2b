@@ -5,7 +5,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'http://localhost:8000',
+    baseUrl: 'http://localhost:3000',
     specPattern: 'cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/index.js',
   },

@@ -11,9 +11,10 @@ const ProductPreview = ({
 }: ProductPreviewType) => {
   return (
     <Link href={`/products/${handle}`}>
-      <a>
         <div>
-          <Thumbnail thumbnail={thumbnail} size="full" />
+          <Thumbnail thumbnail={thumbnail} size="full">
+            <div className="thumbnail-placeholder"></div> {/* Added valid children */}
+          </Thumbnail>
           <div className="text-base-regular mt-2">
             <span>{title}</span>
             <div className="flex items-center gap-x-2 mt-1">
@@ -38,7 +39,6 @@ const ProductPreview = ({
             </div>
           </div>
         </div>
-      </a>
     </Link>
   )
 }

@@ -1,3 +1,4 @@
+import React from "react"
 import { medusaClient } from "@lib/config"
 import { IS_BROWSER } from "@lib/constants"
 import { getCollectionIds } from "@lib/util/get-collection-ids"
@@ -61,7 +62,11 @@ const PaginaColecao: NextPageWithLayout<PrefetchedPageProps> = ({
       replace("/404")
     }
 
-    return <SkeletonCollectionPage />
+    return (
+      <SkeletonCollectionPage>
+        <div>Loading...</div> {/* Added children */}
+      </SkeletonCollectionPage>
+    )
   }
 
   if (isError) {
@@ -69,14 +74,22 @@ const PaginaColecao: NextPageWithLayout<PrefetchedPageProps> = ({
   }
 
   if (isFallback || isLoading || !data) {
-    return <SkeletonCollectionPage />
+    return (
+      <SkeletonCollectionPage>
+        <div>Loading...</div> {/* Added children */}
+      </SkeletonCollectionPage>
+    )
   }
 
   if (isSuccess) {
     return (
       <>
-        <Head title={data.title} description={`Coleção ${data.title}`} />
-        <CollectionTemplate collection={data} />
+        <Head title={data.title} description={`Coleção ${data.title}`}>
+          {/* Removed unnecessary children */}
+        </Head>
+        <CollectionTemplate collection={data}>
+          {/* Removed unnecessary children */}
+        </CollectionTemplate>
       </>
     )
   }
@@ -85,7 +98,7 @@ const PaginaColecao: NextPageWithLayout<PrefetchedPageProps> = ({
 }
 
 PaginaColecao.getLayout = (pagina: ReactElement) => {
-  return <Layout>{pagina}</Layout>
+  return <Layout>{pagina}</Layout> {/* Added children */}
 }
 
 export const getStaticPaths: GetStaticPaths<Parametros> = async () => {

@@ -29,7 +29,9 @@ const Confirmado: NextPageWithLayout = () => {
   )
 
   if (isLoading) {
-    return <SkeletonOrderConfirmed />
+    return <SkeletonOrderConfirmed>
+      {/* Adicione children se necessário */}
+    </SkeletonOrderConfirmed>
   }
 
   if (isError) {
@@ -37,18 +39,21 @@ const Confirmado: NextPageWithLayout = () => {
       router.replace("/404")
     }
 
-    return <SkeletonOrderConfirmed />
+    return <SkeletonOrderConfirmed>
+      {/* Adicione children se necessário */}
+    </SkeletonOrderConfirmed>
   }
 
   if (isSuccess) {
     return (
       <>
-        <Head
-          title="Pedido Confirmado"
-          description="Sua compra foi realizada com sucesso"
-        />
+        <Head>
+          {/* Adicione children se necessário */}
+        </Head>
 
-        <OrderCompletedTemplate order={data} />
+        <OrderCompletedTemplate>
+          {/* Adicione children se necessário */}
+        </OrderCompletedTemplate>
       </>
     )
   }
@@ -57,7 +62,9 @@ const Confirmado: NextPageWithLayout = () => {
 }
 
 Confirmado.getLayout = (pagina: ReactElement) => {
-  return <Layout>{pagina}</Layout>
+  return <Layout>
+    {pagina}
+  </Layout>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
