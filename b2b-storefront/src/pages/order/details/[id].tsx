@@ -9,15 +9,16 @@ import { useRouter } from "next/router"
 import { ReactElement } from "react"
 import { dehydrate, QueryClient, useQuery } from "react-query"
 import { NextPageWithLayout } from "types/global"
+import React from "react";
 
 const buscarPedido = async (id: string) => {
   return await medusaClient.orders.retrieve(id).then(({ order }) => order)
 }
 
 const Confirmado: NextPageWithLayout = () => {
-  const router = useRouter()
+  const router = useRouter();
 
-  const id = typeof router.query?.id === "string" ? router.query.id : ""
+  const id = typeof router.query?.id === "string" ? router.query.id : "";
 
   const { isSuccess, data, isLoading, isError } = useQuery(
     ["obter_detalhes_pedido", id],
@@ -26,18 +27,18 @@ const Confirmado: NextPageWithLayout = () => {
       enabled: id.length > 0,
       staleTime: 60 * 60 * 1000, // 1 hora
     }
-  )
+  );
 
   if (isLoading) {
-    return <SkeletonOrderConfirmed />
+    return <SkeletonOrderConfirmed />;
   }
 
   if (isError) {
     if (IS_BROWSER) {
-      router.replace("/404")
+      router.replace("/404");
     }
 
-    return <SkeletonOrderConfirmed />
+    return <SkeletonOrderConfirmed />;
   }
 
   if (isSuccess) {
@@ -50,36 +51,14 @@ const Confirmado: NextPageWithLayout = () => {
 
         <OrderDetailsTemplate order={data} />
       </>
-    )
+    );
   }
 
-  return <></>
-}
+  return <></>;
+};
 
 Confirmado.getLayout = (pagina: ReactElement) => {
-  return <Layout>{pagina}</Layout>
-}
+  return <Layout>{pagina}</Layout>;
+};
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: "blocking",
-  }
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id as string
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery(["obter_detalhes_pedido", id], () =>
-    buscarPedido(id)
-  )
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
-}
-
-export default Confirmado
+export default Confirmado;

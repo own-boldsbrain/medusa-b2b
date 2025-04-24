@@ -6,7 +6,7 @@ import { NextPageWithLayout } from "types/global"
 const Login: NextPageWithLayout = () => {
   return (
     <>
-      <Head title="Entrar" description="Faça login na sua conta ACME." />
+      <Head title="Entrar" description="Faça login na sua conta Oceano Solar." />
       <LoginTemplate />
     </>
   )
